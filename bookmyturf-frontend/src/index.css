@@ -1,164 +1,18 @@
+*{
+
+  box-sizing:border-box;
+
+}
+
 body{
 
   margin:0;
 
   font-family:Arial, Helvetica, sans-serif;
 
-  background:#f5f5f5;
+  background:#f3f7f5;
 
-}
-
-/* ---------- Login & Register ---------- */
-
-.login-container{
-
-  width:350px;
-
-  margin:100px auto;
-
-  background:white;
-
-  padding:30px;
-
-  border-radius:10px;
-
-  box-shadow:0 0 10px rgba(0,0,0,0.1);
-
-  text-align:center;
-
-}
-
-.login-container input{
-
-  width:100%;
-
-  padding:12px;
-
-  margin:10px 0;
-
-  box-sizing:border-box;
-
-}
-
-.login-container button{
-
-  width:100%;
-
-  padding:12px;
-
-  background:#0b7a3e;
-
-  color:white;
-
-  border:none;
-
-  cursor:pointer;
-
-  border-radius:5px;
-
-}
-
-.login-container a{
-
-  color:#0b7a3e;
-
-  text-decoration:none;
-
-  font-weight:bold;
-
-}
-
-/* ---------- Home Page ---------- */
-
-.home-container{
-
-  width:90%;
-
-  margin:30px auto;
-
-}
-
-.home-container h1{
-
-  text-align:center;
-
-  color:#0b7a3e;
-
-}
-
-.turf-card{
-
-  background:white;
-
-  padding:20px;
-
-  margin:20px 0;
-
-  border-radius:10px;
-
-  box-shadow:0 0 8px rgba(0,0,0,0.1);
-
-  display:flex;
-
-  gap:20px;
-
-  align-items:center;
-
-}
-
-.turf-content{
-
-  flex:1;
-
-}
-
-.turf-card h2{
-
-  margin:0;
-
-  color:#0b7a3e;
-
-}
-
-.turf-card p{
-
-  margin:8px 0;
-
-}
-
-.turf-card button{
-
-  background:#0b7a3e;
-
-  color:white;
-
-  border:none;
-
-  padding:10px 20px;
-
-  border-radius:5px;
-
-  cursor:pointer;
-
-  margin-right:10px;
-
-}
-
-.turf-image{
-
-  width:280px;
-
-  height:180px;
-
-  object-fit:contain;
-
-  background:#f5f5f5;
-
-  border-radius:10px;
-
-  display:block;
-
-  flex-shrink:0;
+  color:#17352a;
 
 }
 
@@ -166,7 +20,7 @@ body{
 
 .navbar{
 
-  background:#0b7a3e;
+  background:linear-gradient(135deg,#063d2a,#08783f);
 
   color:white;
 
@@ -176,7 +30,17 @@ body{
 
   align-items:center;
 
-  padding:15px 30px;
+  padding:10px 55px;
+
+  min-height:75px;
+
+  box-shadow:0 4px 20px rgba(0,0,0,0.15);
+
+  position:sticky;
+
+  top:0;
+
+  z-index:1000;
 
 }
 
@@ -188,13 +52,15 @@ body{
 
   gap:8px;
 
+  flex-shrink:0;
+
 }
 
 .logo-icon{
 
-  width:90px;
+  width:82px;
 
-  height:60px;
+  height:58px;
 
   display:block;
 
@@ -204,61 +70,499 @@ body{
 
   margin:0;
 
-  font-size:24px;
+  font-size:25px;
 
   color:white;
 
 }
 
-.navbar a{
+/* ---------- Navbar Search ---------- */
+
+.navbar-search{
+
+  display:flex;
+
+  align-items:center;
+
+  background:white;
+
+  border-radius:25px;
+
+  width:390px;
+
+  height:42px;
+
+  padding:0 15px;
+
+  margin-left:35px;
+
+  margin-right:25px;
+
+}
+
+.navbar-search span{
+
+  font-size:18px;
+
+  margin-right:8px;
+
+}
+
+.navbar-search input{
+
+  width:100%;
+
+  border:none;
+
+  outline:none;
+
+  font-size:14px;
+
+  background:transparent;
+
+  color:#333;
+
+}
+
+.navbar-search input::placeholder{
+
+  color:#777;
+
+}
+
+/* ---------- Navbar Links ---------- */
+
+.navbar-links{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:25px;
+
+  white-space:nowrap;
+
+}
+
+.navbar-links span{
+
+  font-size:14px;
+
+  color:#e5fff1;
+
+}
+
+.navbar-links a{
 
   color:white;
 
   text-decoration:none;
 
-  margin-right:20px;
+  font-size:15px;
+
+  font-weight:bold;
+
+  transition:0.3s;
 
 }
 
-.navbar button{
+.navbar-links a:hover{
+
+  color:#9af2bd;
+
+}
+
+.navbar-links button{
 
   background:white;
 
-  color:#0b7a3e;
+  color:#08783f;
 
   border:none;
 
-  padding:8px 14px;
+  padding:11px 20px;
 
-  border-radius:5px;
+  border-radius:9px;
 
   cursor:pointer;
 
+  font-weight:bold;
+
+  font-size:14px;
+
+  transition:0.3s;
+
 }
 
-.search-box{
+.navbar-links button:hover{
+
+  background:#e4f8eb;
+
+  transform:translateY(-2px);
+
+}
+
+/* ---------- Home Page ---------- */
+
+.home-container{
+
+  width:92%;
+
+  max-width:1250px;
+
+  margin:0 auto;
+
+  padding:35px 0 70px;
+
+}
+
+.home-container h1{
+
+  text-align:center;
+
+  color:#123b2c;
+
+  font-size:42px;
+
+  margin:5px 0 10px;
+
+}
+
+.home-container h1::after{
+
+  content:"";
+
+  display:block;
+
+  width:65px;
+
+  height:4px;
+
+  background:#0b8f4b;
+
+  border-radius:5px;
+
+  margin:15px auto 0;
+
+}
+
+.home-subtitle{
+
+  text-align:center;
+
+  color:#55766a;
+
+  font-size:18px;
+
+  margin:55px 0 55px;
+
+}
+
+/* ---------- Turf Grid ---------- */
+
+.turf-grid{
+
+  display:grid;
+
+  grid-template-columns:repeat(2,1fr);
+
+  gap:30px;
+
+}
+
+/* ---------- Turf Card ---------- */
+
+.turf-card{
+
+  background:white;
+
+  border-radius:18px;
+
+  overflow:hidden;
+
+  box-shadow:0 8px 25px rgba(0,0,0,0.08);
+
+  border:1px solid #e1ebe5;
+
+  transition:0.3s;
+
+}
+
+.turf-card:hover{
+
+  transform:translateY(-5px);
+
+  box-shadow:0 15px 35px rgba(0,0,0,0.13);
+
+}
+
+/* ---------- Turf Image ---------- */
+
+.turf-image{
 
   width:100%;
 
-  padding:12px;
+  height:220px;
 
-  margin:20px 0;
+  object-fit:contain;
 
-  border:1px solid #ccc;
+  background:#f3f7f5;
+
+  display:block;
+
+  padding:10px;
+
+}
+
+/* ---------- Turf Content ---------- */
+
+.turf-content{
+
+  padding:20px 24px 24px;
+
+}
+
+.turf-card h2{
+
+  margin:0 0 14px;
+
+  color:#075f35;
+
+  font-size:25px;
+
+}
+
+.turf-card p{
+
+  margin:10px 0;
+
+  color:#5b6d64;
+
+  font-size:15px;
+
+  line-height:1.5;
+
+}
+
+.turf-location{
+
+  color:#08783f !important;
+
+  font-weight:bold;
+
+}
+
+.turf-price{
+
+  color:#08783f !important;
+
+  font-size:18px !important;
+
+  font-weight:bold;
+
+}
+
+/* ---------- Turf Buttons ---------- */
+
+.turf-buttons{
+
+  display:flex;
+
+  gap:10px;
+
+  margin-top:18px;
+
+}
+
+.turf-card button{
+
+  padding:11px 18px;
 
   border-radius:8px;
 
-  box-sizing:border-box;
+  cursor:pointer;
+
+  font-weight:bold;
+
+  transition:0.3s;
+
+}
+
+.map-button{
+
+  background:white;
+
+  color:#08783f;
+
+  border:2px solid #08783f;
+
+}
+
+.map-button:hover{
+
+  background:#08783f;
+
+  color:white;
+
+}
+
+.book-button{
+
+  background:#08783f;
+
+  color:white;
+
+  border:2px solid #08783f;
+
+}
+
+.book-button:hover{
+
+  background:#055d31;
+
+}
+
+/* ---------- Login & Register ---------- */
+
+.login-container{
+
+  width:380px;
+
+  max-width:90%;
+
+  margin:80px auto;
+
+  background:white;
+
+  padding:35px;
+
+  border-radius:18px;
+
+  box-shadow:0 15px 40px rgba(0,0,0,0.12);
+
+  text-align:center;
+
+}
+
+.login-container h1{
+
+  color:#08783f;
+
+  font-size:32px;
+
+  margin-bottom:10px;
+
+}
+
+.login-container h2{
+
+  color:#17352a;
+
+  margin-bottom:25px;
+
+}
+
+.login-container input{
+
+  width:100%;
+
+  padding:14px;
+
+  margin:10px 0;
+
+  border:1px solid #d5dfda;
+
+  border-radius:9px;
+
+  font-size:15px;
+
+  outline:none;
+
+}
+
+.login-container input:focus{
+
+  border-color:#0b8f4b;
+
+}
+
+.login-container button{
+
+  width:100%;
+
+  padding:14px;
+
+  margin-top:12px;
+
+  background:#08783f;
+
+  color:white;
+
+  border:none;
+
+  cursor:pointer;
+
+  border-radius:9px;
+
+  font-size:16px;
+
+  font-weight:bold;
+
+}
+
+.login-container a{
+
+  color:#08783f;
+
+  text-decoration:none;
+
+  font-weight:bold;
 
 }
 
 /* ---------- Responsive ---------- */
 
+@media (max-width:1100px){
+
+  .navbar{
+
+    padding:10px 25px;
+
+  }
+
+  .navbar-search{
+
+    width:280px;
+
+    margin-left:20px;
+
+    margin-right:15px;
+
+  }
+
+  .navbar-links{
+
+    gap:15px;
+
+  }
+
+  .turf-grid{
+
+    grid-template-columns:1fr;
+
+  }
+
+}
+
 @media (max-width:768px){
 
   .navbar{
 
-    padding:12px 15px;
+    flex-wrap:wrap;
+
+    padding:10px 15px;
+
+    gap:10px;
 
   }
 
@@ -276,19 +580,89 @@ body{
 
   }
 
-  .turf-card{
+  .navbar-search{
 
-    flex-direction:column;
+    order:3;
 
-    align-items:stretch;
+    width:100%;
+
+    margin:5px 0;
+
+  }
+
+  .navbar-links{
+
+    gap:10px;
+
+  }
+
+  .navbar-links span{
+
+    display:none;
+
+  }
+
+  .navbar-links a{
+
+    font-size:12px;
+
+  }
+
+  .navbar-links button{
+
+    padding:8px 12px;
+
+    font-size:12px;
+
+  }
+
+  .home-container{
+
+    width:94%;
+
+  }
+
+  .home-container h1{
+
+    font-size:30px;
+
+  }
+
+  .home-subtitle{
+
+    font-size:15px;
+
+    margin:35px 0;
 
   }
 
   .turf-image{
 
+    height:200px;
+
+    object-fit:contain;
+
+    background:#f3f7f5;
+
+    padding:8px;
+
+  }
+
+}
+
+@media (max-width:480px){
+
+  .navbar{
+
+    justify-content:center;
+
+  }
+
+  .navbar-links{
+
     width:100%;
 
-    height:200px;
+    justify-content:center;
 
   }
 

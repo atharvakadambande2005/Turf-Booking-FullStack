@@ -1,12 +1,15 @@
-import { useEffect, useState, useMemo } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import API from "../services/apiService";
 import Navbar from "../components/Navbar";
 
 function Home() {
   const [turfs, setTurfs] = useState([]);
-  const [search, setSearch] = useState("");
+
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+
+  const search = searchParams.get("search") || "";
 
   useEffect(() => {
     fetchTurfs();
@@ -17,49 +20,83 @@ function Home() {
     setTurfs(res.data);
   };
 
-  const filteredTurfs = useMemo(() => {
-    return turfs.filter((turf) =>
-      turf.location.toLowerCase().includes(search.toLowerCase())
-    );
-  }, [turfs, search]);
+  const filteredTurfs = turfs.filter((turf) =>
+    turf.location.toLowerCase().includes(search.toLowerCase())
+  );
+
+  const viewOnMap = (address) => {
+    const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+    window.open(mapUrl, "_blank");
+  };
 
   return (
     <>
       <Navbar />
 
       <div className="home-container">
-        <h1>Available Cricket Turfs</h1>
 
-        <input
-          type="text"
-          placeholder="Search by location..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="search-box"
-        />
+        <h1>Book Your Perfect Turf</h1>
 
-        {filteredTurfs.map((turf) => (
-          <div className="turf-card" key={turf.id}>
+        <p className="home-subtitle">
+          Your Game. Your Turf. Your Time.
+        </p>
 
-            <img
-              src={turf.image}
-              alt={turf.name}
-              className="turf-image"
-            />
+        <div className="turf-grid">
 
-            <div className="turf-content">
-              <h2>{turf.name}</h2>
-              <p>{turf.location}</p>
-              <p>₹ {turf.pricePerHour} / Hour</p>
-              <p>{turf.description}</p>
+          {filteredTurfs.map((turf) => (
+            <div className="turf-card" key={turf.id}>
 
-              <button onClick={() => navigate(`/booking/${turf.id}`)}>
-                Book Now
-              </button>
+              <img
+                src={turf.image}
+                alt={turf.name}
+                className="turf-image"
+              />
+
+              <div className="turf-content">
+
+                <h2>{turf.name}</h2>
+
+                <p className="turf-location">
+                  📍 {turf.location}
+                </p>
+
+                <p>
+                  🗺️ {turf.address}
+                </p>
+
+                <p className="turf-price">
+                  💰 ₹ {turf.pricePerHour} / Hour
+                </p>
+
+                <p>
+                  {turf.description}
+                </p>
+
+                <div className="turf-buttons">
+
+                  <button
+                    className="map-button"
+                    onClick={() => viewOnMap(turf.address)}
+                  >
+                    View on Map
+                  </button>
+
+                  <button
+                    className="book-button"
+                    onClick={() => navigate(`/booking/${turf.id}`)}
+                  >
+                    Book Now
+                  </button>
+
+                </div>
+
+              </div>
+
             </div>
+          ))}
 
-          </div>
-        ))}
+        </div>
+
       </div>
     </>
   );

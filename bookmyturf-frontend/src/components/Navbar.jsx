@@ -1,14 +1,31 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 
 function Navbar() {
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const role = localStorage.getItem("userRole");
   const name = localStorage.getItem("userName");
 
+  const search = searchParams.get("search") || "";
+
   const logout = () => {
     localStorage.clear();
     navigate("/");
+  };
+
+  const handleSearch = (e) => {
+    const value = e.target.value;
+
+    if (value) {
+      setSearchParams({ search: value });
+    } else {
+      setSearchParams({});
+    }
+
+    if (window.location.pathname !== "/home") {
+      navigate("/home");
+    }
   };
 
   return (
@@ -199,10 +216,25 @@ function Navbar() {
 
       </div>
 
-      <div>
-        <span style={{ marginRight: "20px" }}>Hi, {name}</span>
+      <div className="navbar-search">
+
+        <span>🔍</span>
+
+        <input
+          type="text"
+          placeholder="Search turf by location..."
+          value={search}
+          onChange={handleSearch}
+        />
+
+      </div>
+
+      <div className="navbar-links">
+
+        <span>Hi, {name}</span>
 
         <Link to="/home">Home</Link>
+
         <Link to="/mybookings">My Bookings</Link>
 
         {role === "ADMIN" && (
@@ -210,6 +242,7 @@ function Navbar() {
         )}
 
         <button onClick={logout}>Logout</button>
+
       </div>
 
     </nav>

@@ -32,9 +32,11 @@ public class TurfService {
 
         existingTurf.setName(turf.getName());
         existingTurf.setLocation(turf.getLocation());
+        existingTurf.setAddress(turf.getAddress());
         existingTurf.setPricePerHour(turf.getPricePerHour());
         existingTurf.setDescription(turf.getDescription());
         existingTurf.setImage(turf.getImage());
+        
 
         repo.save(existingTurf);
 

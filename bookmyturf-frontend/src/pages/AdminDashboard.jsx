@@ -7,6 +7,7 @@ function AdminDashboard() {
     name: "",
     location: "",
     pricePerHour: "",
+    address: "",
     description: "",
     image: ""
   });
@@ -35,6 +36,7 @@ function AdminDashboard() {
       name: "",
       location: "",
       pricePerHour: "",
+      address: "",
       description: "",
       image: ""
     });
@@ -49,6 +51,7 @@ function AdminDashboard() {
       name: turf.name,
       location: turf.location,
       pricePerHour: turf.pricePerHour,
+      address: turf.address,
       description: turf.description,
       image: turf.image
     });
@@ -64,6 +67,7 @@ function AdminDashboard() {
       name: "",
       location: "",
       pricePerHour: "",
+      address: "",
       description: "",
       image: ""
     });
@@ -100,6 +104,13 @@ function AdminDashboard() {
           name="location"
           placeholder="Location"
           value={turf.location}
+          onChange={handleChange}
+        />
+
+        <input
+          name="address"
+          placeholder="Full Address"
+          value={turf.address}
           onChange={handleChange}
         />
 
